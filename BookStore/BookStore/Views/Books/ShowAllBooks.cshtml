@@ -1,0 +1,32 @@
+﻿@model IEnumerable<BookStore.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="alert alert-success mt-5 mb-5" role="alert" style="height:120px">
+    <h1 class="text-center mt-2">Welcome To Apna Book Store</h1>
+</div>
+
+<div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <div class="card mb-4 text-center" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <img src="@item.CoverImg" class="card-img-top" alt="Book Cover">
+                    <div class="card-body">
+                        <h5 class="card-title">Title : @item.Title</h5>
+                        <p class="card-text"><strong>Author:</strong> @item.Author</p>
+                        <p class="card-text"><strong>Price:</strong> Rs @item.Price </p>
+                        <div class="btn-group" role="group" aria-label="Actions">
+                            <a href="@Url.Action("PurchaseBook", new { id = item.Id })" class="btn btn-info">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
+

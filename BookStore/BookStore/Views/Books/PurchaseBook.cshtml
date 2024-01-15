@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model BookStore.Models.Book
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "PurchaseBook";
+}
+
+<style>
+    /* Add your custom styles here */
+    .book-container {
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        background-color: #f8f9fa;
+    }
+
+    .book-image {
+        text-align: center;
+    }
+
+    .book-details {
+        padding-left: 20px;
+    }
+
+    .buy-now-btn {
+        margin-top: 20px;
+    }
+</style>
+
+<h1 class="text-center mt-4">Purchase Book</h1>
+
+<div class="container book-container">
+    <div class="row">
+        <div class="col-lg-6 book-image">
+            <!-- Display existing image -->
+            @if (!string.IsNullOrEmpty(Model.CoverImg))
+            {
+                <div>
+                    <img src="@Model.CoverImg" class="img-fluid rounded" alt="Book Cover" style="height:400px" />
+                </div>
+            }
+        </div>
+        <div class="col-lg-6 book-details">
+            <h3 class="mt-4">Title: @Html.DisplayFor(model => model.Title)</h3>
+            <h6>Author: @Html.DisplayFor(model => model.Author)</h6>
+            <hr class="my-3" />
+            <p>Description: @Html.DisplayFor(model => model.Description)</p>
+            <h6>Price: $@Html.DisplayFor(model => model.Price)</h6>
+
+       @*      <div class="mt-4 buy-now-btn">
+                <a href="@Url.Action("PurchaseBook", new { id = Model.Id })" class="btn btn-primary">Buy Now</a>
+            </div> *@
+            <div class="mt-4 buy-now-btn">               
+                @* <a href="@Url.Action("ReceiptBook", "OrderBook")" class="btn btn-primary">Buy Now</a> *@
+                <a href="@Url.Action("ReceiptBook", "OrderBook")" class="btn btn-primary">Buy Now</a>
+            </div>
+        </div>
+    </div>
+</div>

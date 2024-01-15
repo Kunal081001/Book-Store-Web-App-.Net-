@@ -1,0 +1,58 @@
+﻿@model IEnumerable<BookStore.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<p class="mt-5">
+    <button type="button" style="width:150px;" class="btn btn-primary"><a asp-action="Create" style=" color:white; text-decoration: none">Add New Book</a></button>
+    @* <a asp-action="Create">Create New</a> *@
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                    <button type="button" style="width:90px;" class="btn btn-primary"><a asp-action="Edit" asp-route-id="@item.Id" style=" color:white; text-decoration: none">Edit</a></button>
+                    <button type="button" style="width:90px "class="btn btn-info"> <a asp-action="Details" asp-route-id="@item.Id" style=" color:white; text-decoration: none">Details</a></button>
+                    <button type="button" style="width:90px " class="btn btn-danger"> <a asp-action="Delete" asp-route-id="@item.Id" style=" color:white; text-decoration: none">Delete</a></button>
+
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+ 
